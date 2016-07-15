@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -58,11 +59,16 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse2">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="../index.html">Posts</a></li>
-                <li><a href="../user/login.html" role="button">로그인</a></li>
-                <li><a href="../user/form.html" role="button">회원가입</a></li>
-                <li><a href="#" role="button">로그아웃</a></li>
-                <li><a href="#" role="button">개인정보수정</a></li>
+            <c:choose>
+						<c:when test="${empty session.userId }">
+							<li><a href="../user/login.html" role="button">로그인</a></li>
+							<li><a href="../user/form.html" role="button">회원가입</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="#" role="button">로그아웃</a></li>
+							<li><a href="#" role="button">개인정보수정</a></li>
+						</c:otherwise>
+					</c:choose>
             </ul>
         </div>
     </div>
