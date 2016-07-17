@@ -61,7 +61,7 @@
 					style="color: #dd1111;"></i> Home <small><i
 						class="glyphicon glyphicon-chevron-down"></i></small></a>
 				<ul class="nav dropdown-menu">
-					<li><a href="../user/profile.html"><i
+					<li><a href="/user/profile"><i
 							class="glyphicon glyphicon-user" style="color: #1111dd;"></i>
 							Profile</a></li>
 					<li class="nav-divider"></li>
