@@ -17,7 +17,7 @@ import next.model.User;
 
 @WebServlet("/user/profile")
 public class ProfileServlet extends HttpServlet {
-	private static final Logger log = LoggerFactory.getLogger(UpdateUserFormServlet.class);
+	private static final Logger log = LoggerFactory.getLogger(ProfileServlet.class);
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 				String userId=(String)req.getSession().getAttribute("userId");

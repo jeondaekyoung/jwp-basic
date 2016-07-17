@@ -33,7 +33,7 @@ public class User {
 		this.userId = userId;
 	}
 
-	public void setPassword(String password) {
+	/*public void setPassword(String password) {
 		this.password = password;
 	}
 
@@ -43,8 +43,15 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
+	}*/
 
+	public void update(String password, String name,String email){
+		this.password = password;
+		this.name = name;
+		this.email = email;
+	}
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
