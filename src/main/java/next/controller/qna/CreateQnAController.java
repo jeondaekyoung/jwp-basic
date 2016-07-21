@@ -21,8 +21,10 @@ public class CreateQnAController extends AbstractController {
     private QuestionDao questionDao = new QuestionDao();
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		if(request.getSession().getAttribute("USER")==null){
-			return jspView("redirect:/");
+		if(request.getSession().getAttribute("user")==null){
+			 throw new NullPointerException("로그인 이후 이용하세요.");
+	
+			
 		}
 		
 		Question question = new Question(
