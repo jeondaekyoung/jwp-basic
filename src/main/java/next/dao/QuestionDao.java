@@ -1,12 +1,16 @@
 package next.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 
-import next.model.Question;
 import core.jdbc.JdbcTemplate;
+import core.jdbc.PreparedStatementCreator;
 import core.jdbc.RowMapper;
+import next.model.Question;
 
 public class QuestionDao {
 	public List<Question> findAll() {
@@ -46,4 +50,16 @@ public class QuestionDao {
 		
 		return jdbcTemplate.queryForObject(sql, rm, questionId);
 	}
-}
+	public void insert(Question question){
+		 JdbcTemplate jdbcTemplate = new JdbcTemplate();
+	        String sql = "INSERT INTO QUESTIONS VALUES (?, ?, ?, ?, ?, ?)";
+	        jdbcTemplate.update(sql, 
+	        		question.getQuestionId(),
+	        		question.getWriter(),
+	        		question.getTitle(),
+	        		question.getContents(),
+	        		question.getCreatedDate(),
+	        		question.getCountOfComment());
+	        }
+	}
+
