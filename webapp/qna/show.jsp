@@ -55,23 +55,26 @@
 					<div class="qna-comment-slipp">
 						<p class="qna-comment-count"><strong>${question.countOfComment}</strong>개의 의견</p>
 						<div class="qna-comment-slipp-articles">
-							<article class="article">
+							<c:choose>
+								<c:when test="${not empty answers }">
+									<c:forEach var="answers" items="${answers}">
+											<article class="article">
 								<div class="article-header">
 									<div class="article-header-thumb">
 										<img src="https://graph.facebook.com/v2.3/1324855987/picture" class="article-author-thumb" alt="">
 									</div>
 									<div class="article-header-text">
-										Toby Lee
-										<div class="article-header-time">2016-02-15 13:13:45</div>
+										${answers.writer }
+										<div class="article-header-time">${answers.createdDate}</div>
 									</div>
 								</div>
 								<div class="article-doc comment-doc">
-									<p>람다식에서 사용되는 변수라면 람다식 내부에서 정의된 로컬 변수이거나 람다식이 선언된 외부의 변수를 참조하는 것일텐데, 전자라면 아무리 변경해도 문제될 이유가 없고, 후자는 변경 자체가 허용이 안될텐데. 이 설명이 무슨 뜻인지 이해가 안 됨.</p>
+									<p>${answers.contents}</p>
 								</div>
 								<div class="article-util">
 									<ul class="article-util-list">
 										<li>
-											<a class="link-modify-article" href="/api/qna/updateAnswer?answerId=5">수정</a>
+											<a class="link-modify-article" href="/api/qna/updateAnswer?answerId=${answers.answerId }">수정</a>
 										</li>
 										<li>
 											<form class="form-delete" action="/api/qna/deleteAnswer" method="POST">
@@ -82,33 +85,13 @@
 									</ul>
 								</div>
 							</article>
-							<article class="article">
-								<div class="article-header">
-									<div class="article-header-thumb">
-										<img src="https://graph.facebook.com/v2.3/1324855987/picture" class="article-author-thumb" alt="">
-									</div>
-									<div class="article-header-text">
-										Toby Lee
-										<div class="article-header-time">2016-02-15 13:13:45</div>
-									</div>
-								</div>
-								<div class="article-doc comment-doc">
-									<p>람다식에서 사용되는 변수라면 람다식 내부에서 정의된 로컬 변수이거나 람다식이 선언된 외부의 변수를 참조하는 것일텐데, 전자라면 아무리 변경해도 문제될 이유가 없고, 후자는 변경 자체가 허용이 안될텐데. 이 설명이 무슨 뜻인지 이해가 안 됨.</p>
-								</div>
-								<div class="article-util">
-									<ul class="article-util-list">
-										<li>
-											<a class="link-modify-article" href="/api/qna/updateAnswer?answerId=5">수정</a>
-										</li>
-										<li>
-											<form class="form-delete" action="/api/qna/deleteAnswer" method="POST">
-												<input type="hidden" name="answerId" value="5">
-												<button type="submit" class="link-delete-article">삭제</button>
-											</form>
-										</li>
-									</ul>
-								</div>
-							</article>
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+								답변이 없어요 ! 답변을 달아주세요 ^0^
+								</c:otherwise>
+							</c:choose>
+						
 							<div class="answerWrite">
                             <form name="answer" method="post">
 								<input type="hidden" name="questionId" value="${question.questionId}">
