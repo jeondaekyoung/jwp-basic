@@ -13,7 +13,7 @@ import core.mvc.Controller;
 import next.dao.AnswerDao;
 import next.model.Answer;
 
-@WebServlet("/qna/addanswer")
+
 public class AddAnswerController implements Controller {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {

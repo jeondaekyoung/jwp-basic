@@ -26,6 +26,12 @@ function onSuccess(json, status){
 	 $(".qna-comment-slipp-articles").prepend(template);
 } 
 
+$(".form-delete button[type=submit]").click(deleteAnswer);
+
+function deleteAnswer(){
+	console.log(" 삭제 ");
+}
+
 String.prototype.format = function() {
 
 	var args = arguments;
