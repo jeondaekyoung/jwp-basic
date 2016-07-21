@@ -9,7 +9,9 @@ import org.slf4j.LoggerFactory;
 import core.mvc.AbstractController;
 import core.mvc.ModelAndView;
 import next.dao.AnswerDao;
+import next.dao.QuestionDao;
 import next.model.Answer;
+import next.model.Question;
 
 public class AddAnswerController extends AbstractController {
 	private static final Logger log = LoggerFactory.getLogger(AddAnswerController.class);
@@ -22,8 +24,16 @@ public class AddAnswerController extends AbstractController {
 				req.getParameter("contents"), 
 				Long.parseLong(req.getParameter("questionId")));
 		log.debug("answer : {}", answer);
-		
+		long questionId = Long.parseLong(req.getParameter("questionId"));
 		Answer savedAnswer = answerDao.insert(answer);
-		return jsonView().addObject("answer", savedAnswer);
+		QuestionDao questionDao = new QuestionDao();
+		
+		questionDao.update(questionId);
+		
+		Question question = questionDao.findById(questionId);
+		
+		log.info("Question ::: {} :::", question);
+		
+		return jsonView().addObject("answer", savedAnswer).addObject("question", question);
 	}
 }

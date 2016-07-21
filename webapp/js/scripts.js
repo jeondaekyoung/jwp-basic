@@ -18,6 +18,8 @@ function addAnswer(e) {
 
 function onSuccess(json, status){
   var answer = json.answer;
+  var question = json.question;
+  console.log(question.countOfComment);
   var answerTemplate = $("#answerTemplate").html();
   var template = answerTemplate.format(answer.writer, new Date(answer.createdDate), answer.contents, answer.answerId, answer.answerId);
   $(".qna-comment-slipp-articles").prepend(template);
@@ -36,3 +38,7 @@ String.prototype.format = function() {
         ;
   });
 };
+
+function countComment(){
+	console.log($("#countOfComment").text());
+}
