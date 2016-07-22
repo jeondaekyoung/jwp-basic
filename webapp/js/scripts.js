@@ -15,15 +15,17 @@ function addAnswer(e) {
     success : onSuccess,
   });
 }
-
+//8번문제
 function onSuccess(json, status){
   var answer = json.answer;
   var question = json.question;
-  console.log(question.countOfComment);
+  var updateComment=$("#countComments").text(question.countOfComment);
+  console.log(question.countOfComment,updateComment);
+
   var answerTemplate = $("#answerTemplate").html();
   var template = answerTemplate.format(answer.writer, new Date(answer.createdDate), answer.contents, answer.answerId, answer.answerId);
   $(".qna-comment-slipp-articles").prepend(template);
-  cosole.log(question.countOfComment);
+  
 }
 
 function onError(xhr, status) {

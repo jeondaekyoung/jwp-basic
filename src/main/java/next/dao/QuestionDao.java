@@ -61,6 +61,7 @@ public class QuestionDao {
 				question.getCreatedDate(),
 				question.getCountOfComment());
 	}
+	//8번문제
 	public void update(long questionId){
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 		String sql = "UPDATE QUESTIONS SET COUNTOFANSWER=COUNTOFANSWER+1 WHERE QUESTIONID =?";

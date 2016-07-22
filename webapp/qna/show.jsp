@@ -55,6 +55,7 @@
 					<div class="qna-comment-slipp">
 						<p class="qna-comment-count"><strong id="countComments">${question.countOfComment}</strong>개의 의견</p>
 						<div class="qna-comment-slipp-articles">
+						<!-- 5번문제 -->
 							<c:choose>
 								<c:when test="${not empty answers }">
 									<c:forEach var="answers" items="${answers}">

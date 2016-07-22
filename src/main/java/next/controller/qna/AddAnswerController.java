@@ -24,6 +24,7 @@ public class AddAnswerController extends AbstractController {
 				req.getParameter("contents"), 
 				Long.parseLong(req.getParameter("questionId")));
 		log.debug("answer : {}", answer);
+		//8번문제
 		long questionId = Long.parseLong(req.getParameter("questionId"));
 		Answer savedAnswer = answerDao.insert(answer);
 		QuestionDao questionDao = new QuestionDao();
@@ -31,8 +32,7 @@ public class AddAnswerController extends AbstractController {
 		questionDao.update(questionId);
 		
 		Question question = questionDao.findById(questionId);
-		
-		log.info("Question ::: {} :::", question);
+			
 		
 		return jsonView().addObject("answer", savedAnswer).addObject("question", question);
 	}
