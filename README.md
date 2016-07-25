@@ -1,6 +1,8 @@
 #### 1. Tomcat 서버를 시작할 때 웹 애플리케이션이 초기화하는 과정을 설명하라.
 
-* 
+* ContextLoaderListener 에서 DB초기화 및 서블릿 컨테이너 초기화 작업을 한다.
+* DispatcherServlet에서 init()을 호출하고  RequestMapping을 생성하고 초기화 한다. 
+* (아는 부분까지만 적어보았습니다.)
 
 #### 2. Tomcat 서버를 시작한 후 http://localhost:8080으로 접근시 호출 순서 및 흐름을 설명하라.
 * DispatcherServlet이 RequestMapping을 호출해서 url패턴과 맞는 Controller를 찾아 매핑 해준후 다시 DispatcherServlet 요청을 넘긴다.
