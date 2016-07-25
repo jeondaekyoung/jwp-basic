@@ -42,6 +42,26 @@ String.prototype.format = function() {
   });
 };
 
-function countComment(){
+//9번 문제 
+function addAnswerList() {
+
+	$.ajax({
+		type : 'get',
+		url : '/api/qna/list',
+		dataType : 'json',
+		error: onError,
+		success : onSuccessList
+
+	});
+	function onErrorList(xhr,status) {
+		alert(error);
+	}
+	function onSuccessList(json,status) {
+		console.log(json);
+	}
+}
+
+
+function checkUser(){
 	console.log($("#countOfComment").text());
 }

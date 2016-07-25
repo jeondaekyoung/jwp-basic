@@ -13,7 +13,9 @@
 <div class="container" id="main">
    <div class="col-md-12 col-sm-12 col-lg-10 col-lg-offset-1">
       <div class="panel panel-default content-main">
-          <form name="question" method="post" action="/qna/create">
+         <c:choose>
+         	<c:when test="${empty question}">
+         	 <form name="question" method="post" action="/qna/create">
               <div class="form-group">
                   <label for="writer">글쓴이</label>
                   <input class="form-control" id="writer" name="writer" placeholder="글쓴이"/>
@@ -29,6 +31,31 @@
               <button type="submit" class="btn btn-success clearfix pull-right">질문하기</button>
               <div class="clearfix" />
           </form>
+         	</c:when>
+         	<c:otherwise>
+         		 <form name="question" method="post" action="/qna/update">
+         		  <input type="hidden" class="form-control" id="questionId" name="questionId" value="${question.questionId }" />
+              <div class="form-group">
+                  
+                  <input class="form-control" id="writer" name="writer" value="${question.writer }" placeholder="글쓴이"/>
+              </div>
+              <div class="form-group">
+                  
+                  <input type="text" class="form-control" value="${question.title }" id="title" name="title" placeholder="제목"/>
+              </div>
+              <div class="form-group">
+                  
+                  <textarea name="contents" id="contents" rows="5" class="form-control">${question.contents }</textarea>
+              </div>
+              <button type="submit" class="btn btn-success clearfix pull-right" >수정하기</button>
+              <div class="clearfix" />
+          </form>
+         	</c:otherwise>
+         </c:choose>
+         
+          	
+          	
+          
         </div>
     </div>
 </div>

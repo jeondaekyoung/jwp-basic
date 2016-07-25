@@ -61,11 +61,19 @@ public class QuestionDao {
 				question.getCreatedDate(),
 				question.getCountOfComment());
 	}
+	
 	//8번문제
 	public void update(long questionId){
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 		String sql = "UPDATE QUESTIONS SET COUNTOFANSWER=COUNTOFANSWER+1 WHERE QUESTIONID =?";
 		jdbcTemplate.update(sql,questionId);
+	}
+	//11번문제
+	public void update(long questionId, String writer, String title, String contents) {
+		JdbcTemplate jdbcTemplate = new JdbcTemplate();
+		String sql = "UPDATE QUESTIONS SET WRITER=?,TITLE=?,CONTENTS=? WHERE QUESTIONID =?";
+		jdbcTemplate.update(sql,writer,title,contents,questionId);
+		
 	}
 
 
